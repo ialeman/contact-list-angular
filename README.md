@@ -1,28 +1,59 @@
-# ContactListAngular
+# Java Contact List Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+**Feature:** As a user I should be able to enter the site providing my credentials
 
-## Development server
+**Scenario:** Correct authentication 
+Given I’m a user
+When I provide my user and password correctly
+Then I will be redirected to the main page and I should see my contact list 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Scenario: **Wrong Authentication 
+Given I’m a user
+When I provide an incorrect user or password
+Then I should see a message indicated that my user information is wrong
 
-## Code scaffolding
+*image here*
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Feature:** As a user I should be able to see my contact list
 
-## Build
+**Scenario:** Contact List
+Given I’m a user
+When I enter the site
+Then I should see my contact list
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**Scenario:** Sort Contact list
+Given I’m a user
+When I enter the site, and click on any table header
+Then I should see mi contact list sorted by the header selected (Except nickname)
 
-## Running unit tests
+*image here*
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## What are we going to evaluate?
 
-## Running end-to-end tests
+* Create a spring project based on Gradle.
+* Use Sprint Boot to create the web app.
+* Enable Restful endpoints.
+* Implement login using spring security.
+* Use properties file as much as possible.
+* Use name convention for retrieve data with JPA.
+* Retrieve data using Query string.
+* Create CRUD Contact Functionalities
+* Use Pagination on Contact List
+* Quality of the code
+* Logic
+* Architecture used
+* Good practices/Design patterns
+* Application needs to be deployed to Heroku or any other hosting provider
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## What are we going to evaluate?
 
-## Further help
+* Use Angular and Bootstrap
+* Add tests - TDD/BDD
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# contact-list-angular
+## What are we going to evaluate?
+
+* The code must be uploaded to a GitHub repository
+* You need to create more than 50 contacts to list them into the contact list
+* HAVE FUN CODING!
+
+# Java Contact List Dashboard
