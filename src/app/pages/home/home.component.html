@@ -1,0 +1,133 @@
+<app-navbar></app-navbar>
+
+<p-toast [baseZIndex]="10000"></p-toast>
+<div class="bg-all"></div>
+<div class="container mt-5">
+
+    <p-contextMenu #cm [model]="contextMenu"></p-contextMenu>
+    <p-table #dt [value]="contactList" selectionMode="single" [(selection)]="contactSelected" dataKey="contactId"
+        [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+        [globalFilterFields]="['contactName','contactAge','contactNickname','contactPhone']"
+        [(contextMenuSelection)]="contactSelected" [contextMenu]="cm">
+
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <div class="flex-buttons">
+                    <button pButton label="New" class="p-button-outlined" icon="pi pi-plus"
+                        (click)="fDisplayDialogAdd()"></button>
+                    <button pButton label="Edit" class="p-button-outlined" icon="pi pi-pencil"
+                        [disabled]="!contactSelected.contactId" (click)="fDisplayDialogEdit()"></button>
+                    <button pButton label="Delete" class="p-button-outlined p-button-danger" icon="pi pi-trash"
+                        [disabled]="!contactSelected.contactId" (click)="confirmDelete()"></button>
+                </div>
+
+                <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="contactName">
+                    Name <p-sortIcon field="contactName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="contactAge">
+                    Age <p-sortIcon field="contactAge"></p-sortIcon>
+                </th>
+                <th>
+                    Nickname
+                </th>
+                <th pSortableColumn="contactPhone">
+                    Phone <p-sortIcon field="contactPhone"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-contact>
+            <tr [pSelectableRow]="contact" [pContextMenuRow]="contact">
+                <td>{{contact.contactName}}</td>
+                <td>{{contact.contactAge}}</td>
+                <td>{{contact.contactNickname}}</td>
+                <td>{{contact.contactPhone}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<!-- Create New Contact -->
+<p-dialog header="New Contact" [(visible)]="displayDialogAdd" [modal]="true" [style]="{width: '50vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+    <div class="p-fluid">
+
+        <div class="p-field">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" type="text" pInputText placeholder="Contact Name" [(ngModel)]="contactNew.contactName">
+        </div>
+
+        <div class="p-field">
+            <label for="age">Age</label>
+            <input id="age" type="text" pInputText placeholder="Contact Age" [(ngModel)]="contactNew.contactAge">
+        </div>
+
+        <div class="p-field">
+            <label for="nickname">Nickname</label>
+            <input id="nickname" type="text" pInputText placeholder="Contact Nickname"
+                [(ngModel)]="contactNew.contactNickname">
+        </div>
+
+        <div class="p-field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="text" pInputText placeholder="Contact Phone" [(ngModel)]="contactNew.contactPhone">
+        </div>
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton icon="pi pi-times" (click)="displayDialogAdd=false" label="Close"
+            class="p-button-text"></button>
+        <button pButton icon="pi pi-check" (click)="verifyNew()" label="Ok" class="p-button-info"></button>
+    </ng-template>
+</p-dialog>
+
+<!-- Edit Contact -->
+<p-dialog header="Edit Contact" [(visible)]="displayDialogEdit" [modal]="true" [style]="{width: '50vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+    <div class="p-fluid">
+
+        <div class="p-field">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" type="text" pInputText placeholder="Contact Name"
+                [(ngModel)]="contactSelected.contactName">
+        </div>
+
+        <div class="p-field">
+            <label for="age">Age</label>
+            <input id="age" type="text" pInputText placeholder="Contact Age" [(ngModel)]="contactSelected.contactAge">
+        </div>
+
+        <div class="p-field">
+            <label for="nickname">Nickname</label>
+            <input id="nickname" type="text" pInputText placeholder="Contact Nickname"
+                [(ngModel)]="contactSelected.contactNickname">
+        </div>
+
+        <div class="p-field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="text" pInputText placeholder="Contact Phone"
+                [(ngModel)]="contactSelected.contactPhone">
+        </div>
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton icon="pi pi-times" (click)="displayDialogEdit=false" label="Close"
+            class="p-button-text"></button>
+        <button pButton icon="pi pi-check" (click)="verifyEdit()" label="Ok" class="p-button-info"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

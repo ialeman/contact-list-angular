@@ -7,12 +7,12 @@ Given I’m a user
 When I provide my user and password correctly
 Then I will be redirected to the main page and I should see my contact list 
 
-**Scenario: **Wrong Authentication 
+**Scenario:** Wrong Authentication 
 Given I’m a user
 When I provide an incorrect user or password
 Then I should see a message indicated that my user information is wrong
 
-*image here*
+![alt text](assets/images/example01.png)
 
 **Feature:** As a user I should be able to see my contact list
 
@@ -26,7 +26,7 @@ Given I’m a user
 When I enter the site, and click on any table header
 Then I should see mi contact list sorted by the header selected (Except nickname)
 
-*image here*
+![alt text](assets/images/example02.png)
 
 ## What are we going to evaluate?
 
@@ -45,12 +45,12 @@ Then I should see mi contact list sorted by the header selected (Except nickname
 * Good practices/Design patterns
 * Application needs to be deployed to Heroku or any other hosting provider
 
-## What are we going to evaluate?
+## Plus
 
 * Use Angular and Bootstrap
 * Add tests - TDD/BDD
 
-## What are we going to evaluate?
+## Rules
 
 * The code must be uploaded to a GitHub repository
 * You need to create more than 50 contacts to list them into the contact list

@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-01">
+    <div class="container-fluid">
+        <a class="navbar-brand">Java Contact List</a>
+        <form class="d-flex">
+            <div class="dropdown">
+                <button class="btn btn-menu-login dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    {{userLogin.userFullName}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="javascript:void()"><i class="pi pi-user"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="javascript:void()"><i class="pi pi-cog"></i> Options</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="javascript:void()" (click)="logout()"><i class="pi pi-sign-out"></i> Logout</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</nav>
