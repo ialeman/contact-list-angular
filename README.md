@@ -12,7 +12,7 @@ Given I’m a user
 When I provide an incorrect user or password
 Then I should see a message indicated that my user information is wrong
 
-![alt text](assets/images/example01.png)
+![ScreenShot](/src/assets/images/example01.png)
 
 **Feature:** As a user I should be able to see my contact list
 
@@ -26,7 +26,7 @@ Given I’m a user
 When I enter the site, and click on any table header
 Then I should see mi contact list sorted by the header selected (Except nickname)
 
-![alt text](assets/images/example02.png)
+![ScreenShot](/src/assets/images/example02.png)
 
 ## What are we going to evaluate?
 
